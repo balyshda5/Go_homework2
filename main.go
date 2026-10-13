@@ -80,26 +80,26 @@ func maxChunks(data []int) int {
 }
 
 func main() {
-	fmt.Printf("Генерируем %d целых чисел\n", SIZE)
+	fmt.Printf("Generating %d integers\n", SIZE)
 	data := generateRandomElements(SIZE)
 
-	fmt.Println("Ищем максимальное значение в один поток")
+	fmt.Println("Finding the maximum value using a single goroutine")
 	start := time.Now()
 	maxValue := maximum(data)
 	elapsed := time.Since(start).Microseconds()
 
 	fmt.Printf(
-		"Максимальное значение элемента: %d\nВремя поиска: %d мкс\n",
+		"Maximum element value: %d\nSearch time: %d µs\n",
 		maxValue, elapsed,
 	)
 
-	fmt.Printf("Ищем максимальное значение в %d потоков\n", CHUNKS)
+	fmt.Printf("Finding the maximum value using %d goroutines\n", CHUNKS)
 	start = time.Now()
 	maxValue = maxChunks(data)
 	elapsed = time.Since(start).Microseconds()
 
 	fmt.Printf(
-		"Максимальное значение элемента: %d\nВремя поиска: %d мкс\n",
+		"Maximum element value: %d\nSearch time: %d µs\n",
 		maxValue, elapsed,
 	)
 }
