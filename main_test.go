@@ -18,18 +18,18 @@ func TestGenerateRandomElements(t *testing.T) {
 
 			if tt.size <= 0 {
 				if len(got) != 0 {
-					t.Errorf("ожидался пустой слайс, получено %d элементов", len(got))
+					t.Errorf("expected an empty slice, got %d elements", len(got))
 				}
 				return
 			}
 
 			if len(got) != tt.size {
-				t.Fatalf("ожидалась длина %d, получено %d", tt.size, len(got))
+				t.Fatalf("expected length %d, got %d", tt.size, len(got))
 			}
 
 			for i, value := range got {
 				if value < 1 || value > 1_000_000 {
-					t.Errorf("элемент [%d] вне диапазона: %d", i, value)
+					t.Errorf("element at index [%d] is out of range: %d", i, value)
 				}
 			}
 		})
@@ -53,7 +53,7 @@ func TestMaximum(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := maximum(tt.data); got != tt.want {
-				t.Errorf("maximum(%v) = %d, ожидалось %d", tt.data, got, tt.want)
+				t.Errorf("maximum(%v) = %d, want %d", tt.data, got, tt.want)
 			}
 		})
 	}
@@ -105,7 +105,7 @@ func TestMaxChunks(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := maxChunks(tt.data); got != tt.want {
-				t.Errorf("maxChunks(%v) = %d, ожидалось %d", tt.data, got, tt.want)
+				t.Errorf("maxChunks(%v) = %d, want %d", tt.data, got, tt.want)
 			}
 		})
 	}
